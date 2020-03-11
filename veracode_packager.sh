@@ -1,5 +1,12 @@
 #!/bin/bash
 
+## Setting environment vars
+VERACODE_ID="Enter_Veracode_ID_Here"
+VERACODE_KEY="Veracode_Key"
+APP_ID="Veracode_App_ID"
+APP_NAME="Veracode_App_Name"
+FILE_PATH="Path_To_Save_File"
+
 ## Locating the latest Xcode archive
 ARCHIVES_DIR=~/Library/Developer/Xcode/Archives/
 ARCHIVE_GROUPS=$(ls $ARCHIVES_DIR | sort -r)
@@ -14,7 +21,7 @@ cd "$ARCHIVE"
 ## Creating the Veracode Bitcode archive
 mv Products/Applications ./Payload
 rm -r Products
-zip -r $FILEPATH ./*
+zip -r $FILE_PATH ./*
 
 ## Upload LovesConnect.bca to Veracode
 curl -o veracode-wrapper.jar https://repo1.maven.org/maven2/com/veracode/vosp/api/wrappers/vosp-api-wrappers-java/19.3.5.7/vosp-api-wrappers-java-19.3.5.7.jar
